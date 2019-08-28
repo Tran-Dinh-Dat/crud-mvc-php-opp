@@ -1,6 +1,9 @@
 <?php
     require_once('../models/db.php');
-
+    session_start();
+    if (!isset($_SESSION['login_user'])) {
+        header('location: login.php');
+    }
  
     // print_r($rows);
     // $conn->delete(5, 'user');
@@ -25,7 +28,10 @@
       
     <div class="container">
         <div class="col-md-12">
-            <h3 class="alert alert-success mt-3">Danh sách sinh viên</h3>
+            <h3 class="alert alert-success mt-3">Danh sách sinh viên 
+                <a href="../controllers/logout.php"><input class="btn btn-primary float-right" type="button" value="Logout"></a>
+                <span class="float-right pr-3"><?php echo $_SESSION['login_user']?></span>
+            </h3>
             <a class="btn btn-primary mb-3" href="add.php">Thêm sinh viên</a>
         </div>
         <div class="col-md-12">

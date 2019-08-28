@@ -58,6 +58,16 @@
                 return true;
             }        
         }
+        public function query($sql) 
+        {
+            $result = $this->conn->query($sql);
+            if ($result == false) {
+                echo 'Error: cannot execute the command';
+                return false;
+            } else {
+                return $result;
+            }        
+        }
 
         public function insert($username,$password,$email,$phone) {
             $sql = "INSERT INTO user(username,password, email, phone) 
@@ -92,15 +102,16 @@
             }
         }
 
+        // public function checkLogin() {
+        //     if (isset($_SESSION['login_user'])) {
+        //         return true;
+        //     }
+        // }
+
 
 }
     $conn = new DB();
-    $conn -> connection('localhost', 'root', '', 'php_23_08_2019');
-
-    // $sql = "SELECT * FROM user";
-    // $rows = $conn->fetchAll($sql);
-    // echo "<pre>";
-    // print_r($rows);
+    $conn-> connection('localhost', 'root', '', 'php_23_08_2019');
    
    
 ?>

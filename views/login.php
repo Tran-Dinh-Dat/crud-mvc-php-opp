@@ -1,9 +1,8 @@
 <?php
-    session_start();
-    if (!isset($_SESSION['login_user'])) {
-        header('location: login.php');
-    }
+
+  include("../controllers/login.php");
 ?>
+
 <!doctype html>
 <html lang="en">
   <head>
@@ -19,10 +18,10 @@
 
     <div class="container">
         <div class="col-md-12">
-            <h3 class="alert alert-success mt-3">Thêm thành viên</h3>
+            <h3 class="alert alert-success mt-3">Đăng nhập</h3>
         </div>
         <div class="col-md-12">
-            <form action="../controllers/add.php" method="post">
+            <form action="../controllers/login.php" method="post">
                 <div class="form-group">
                   <label for="">User name</label>
                   <input type="text" name="username" class="form-control" >
@@ -31,15 +30,8 @@
                   <label for="">Password</label>
                   <input type="text" name="password" class="form-control" >
                 </div>
-                <div class="form-group">
-                  <label for="">Email</label>
-                  <input type="text" name="email" class="form-control" >
-                </div>
-                <div class="form-group">
-                  <label for="">Phone</label>
-                  <input type="text" name="phone" class="form-control" >
-                </div>
-                <button type="submit" class="btn btn-primary">Submit</button>
+             
+                <button name="login" type="submit" class="btn btn-primary">Submit</button>
             </form>
         </div>
     </div>
